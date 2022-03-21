@@ -1,8 +1,22 @@
 
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function SingleProductItem() {
-const [counter, setCounter] = useState(1)
+
+    const [counter, setCounter] = useState(1)
+    const [loading, setLoading] = useState(false)
+    const [added, setAdded] = useState(false)
+    const navigate = useNavigate()
+    const addToCart = () => {
+        setLoading(true)
+    setTimeout(() => {
+        setLoading(false)
+        setAdded(true)
+    }, 2000)
+    
+    }
 
   return (
     <div>
@@ -79,7 +93,32 @@ const [counter, setCounter] = useState(1)
           </div>
         </div>
       </div>
-      <button className="bg-orange-500 text-white p-2 font-semibold tracking-wide text-md w-[90%] rounded-2xl mb-10 max-w-[700px] block mx-auto animate-bounce hover:bg-orange-700">Add to Cart</button>
+      {added ? (
+        <div className="flex flex-col items-center justify-center mb-10 gap-5">
+          <p className="bg-green-500 p-2 rounded text-white font-semibold tracker-wider text-lg w-[90%] mx-auto text-center">
+            Added to Cart
+          </p>
+          <button
+            onClick={() => navigate("/cart")}
+            className="bg-white p-2 rounded-full text-black border border-black font-semibold tracker-wider text-lg w-[90%] mx-auto text-center"
+          >
+            View Cart
+          </button>
+          <button
+            onClick={() => navigate("/product")}
+            className="bg-white p-2 rounded-full text-black border border-black font-semibold tracker-wider text-lg w-[90%] mx-auto text-center"
+          >
+            Continue Shopping
+          </button>
+        </div>
+      ) : (
+        <button
+          onClick={addToCart}
+          className="bg-orange-500 text-white p-2 font-semibold tracking-wide text-md w-[90%] rounded-2xl mb-10 max-w-[700px] block mx-auto animate-bounce hover:bg-orange-700"
+        >
+          {loading ? "Adding..." : "Add to Cart"}
+        </button>
+      )}
     </div>
   );
 }

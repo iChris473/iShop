@@ -3,16 +3,10 @@ import { Link } from "react-router-dom";
 
 export default function ProductItem({index}) {
 
-    const handleAnimation = () => {
-
-    }
-
   return (
     <div>
       <Link to="/single">
-        <div
-          onMouseEnter={handleAnimation}
-          className="border p-2 flex flex-col rounded-md items-center justify-center bg-[#fcfbf9] shadow max-w-[150px] md:max-w-[200px] relative hover:bg-orange-50 hover:scale-125 cursor-pointer"
+        <div className="border p-2 flex flex-col rounded-md items-center justify-center bg-[#fcfbf9] shadow max-w-[150px] md:max-w-[200px] relative hover:bg-orange-50 hover:scale-125 cursor-pointer"
         >
           <img
             src={require(`../images/assets/p${index + 1}.png`)}
