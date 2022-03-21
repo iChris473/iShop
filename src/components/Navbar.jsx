@@ -1,15 +1,18 @@
 
 import {MenuAlt3Icon, SearchIcon, ShoppingCartIcon, XIcon} from "@heroicons/react/outline"
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   const [mobile, setMobile] = useState(false)
   return (
     <header className="bg-gray-100 border-b shadow border-gray-200 p-5 fixed w-full z-50">
       <div className="w-full flex items-center justify-between">
-        <h1 className="text-center text-3xl md:text-4xl font-bold tangerine">
-          Perfumes and More Stores
-        </h1>
+        <Link to="/">
+          <h1 className="text-center text-3xl md:text-4xl font-bold tangerine">
+            Perfumes and More Stores
+          </h1>
+        </Link>
         <div className="md:flex items-center justify-center gap-5">
           <div className="md:flex items-center justify-center hidden gap-5">
             <p className="text-gray-600 font-semibold">Register</p>
@@ -24,17 +27,17 @@ export default function Navbar() {
                 <p className="text-white font-semibold text-xs">3</p>
               </div>
             </div>
-              {mobile ? (
-                <XIcon
-                  onClick={() => setMobile(!mobile)}
-                  className="h-7 md:hidden"
-                />
-              ) : (
-                <MenuAlt3Icon
-                  onClick={() => setMobile(!mobile)}
-                  className="h-7 md:hidden"
-                />
-              )}
+            {mobile ? (
+              <XIcon
+                onClick={() => setMobile(!mobile)}
+                className="h-7 md:hidden"
+              />
+            ) : (
+              <MenuAlt3Icon
+                onClick={() => setMobile(!mobile)}
+                className="h-7 md:hidden"
+              />
+            )}
           </div>
         </div>
       </div>
@@ -46,12 +49,16 @@ export default function Navbar() {
           <p className="text-gray-600 border-b pb-2 border-white w-full text-center">
             SIGN IN
           </p>
-          <p className="text-gray-600 border-b pb-2 border-white w-full text-center">
-            Home
-          </p>
-          <p className="text-gray-600 border-b pb-2 border-white w-full text-center">
-            Product
-          </p>
+          <Link to="/">
+            <p className="text-gray-600 border-b pb-2 border-white w-full text-center">
+              Home
+            </p>
+          </Link>
+          <Link to="/product">
+            <p className="text-gray-600 border-b pb-2 border-white w-full text-center">
+              Product
+            </p>
+          </Link>
           <p className="text-gray-600 border-b pb-2 border-white w-full text-center">
             Contact Us
           </p>

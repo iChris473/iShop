@@ -4,7 +4,7 @@ import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
 import NewArrival from '../components/NewArrival'
 import Newsletter from '../components/Newsletter'
-import Products from '../components/Products'
+import Products from '../components/Product'
 import Slide from '../components/Slide'
 import SpecialOffer from '../components/SpecialOffer'
 

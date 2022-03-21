@@ -30,12 +30,28 @@ export default function Products() {
       ]
 
   return (
-    <div className="flex flex-wrap gap-3 my-10 items-center justify-center">
-        {
-            popularProducts.map(item => (
-                <ProductItem key={item.id} img={item.img} />
-            ))
-        }
+    <div className="overflow-hidden mb-20 w-full pt-32 p-3">
+      <h1 className="font-bold text-center text-3xl text-gray-800 mb-10 border-b border-orange-500 w-[80%] mx-auto pb-3">
+        ALL PERFUMES
+      </h1>
+      <div className="flex items-center justify-start gap-5 mb-10">
+        <h1 className="text-gray-600 font-semibold text-xl">Filter Products: </h1>
+          <select className="border p-1 border-gray-400 outline-none rounded-md text-sm">
+            <option value="books">Unisex</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+          <select className="border p-1 border-gray-400 outline-none rounded-md text-sm">
+            <option value="books">Affordable</option>
+            <option value="male">Expensive</option>
+            <option value="female">Cheap</option>
+          </select>
+      </div>
+      <div className="flex flex-wrap gap-10 items-center justify-center ">
+        {[...Array(20)].map((_, i) => (
+          <ProductItem key={i} index={i} />
+        ))}
+      </div>
     </div>
-  )
+  );
 }
