@@ -10,11 +10,11 @@ export default function CartItem() {
   const [subTotal, setSubTotal] = useState(13000)
 
   return (
-    <div className="min-h-screen">
-      <div className="pt-20 relative bg-black bg-opacity-50 min-h-[calc(50vh+5rem)] flex items-center justify-center">
+    <div className="min-h-screen pt-20">
+      <div className="relative bg-black bg-opacity-50 h-[30vh] flex items-center justify-center">
         <img
           src={require("../images/cartbg.jpg")}
-          className="absolute w-screen h-[50vh] opacity-50 -z-10 object-cover"
+          className="absolute w-full h-full opacity-50 -z-10 object-cover"
         />
         <h1 className="text-white font-bold text-4xl">Shopping Cart</h1>
       </div>
@@ -90,7 +90,7 @@ export default function CartItem() {
       </div>
       <div className="flex flex-col gap-5 items-center justify-center my-10">
         <button onClick={() => navigate('/product')} className="p-2 border rounded-full text-lg font-semibold tracking-wide w-[90%] border-black">Continue Shopping</button>
-        <button className="p-2 rounded-full text-lg font-semibold tracking-wide w-[90%] bg-blue-500 text-white animate-bounce">Proceed to Checkout</button>
+        <button onClick={() => navigate('/checkout')} className="p-2 rounded-full text-lg font-semibold tracking-wide w-[90%] bg-blue-500 text-white animate-bounce">Proceed to Checkout</button>
       </div>
     </div>
   );

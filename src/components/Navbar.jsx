@@ -17,16 +17,20 @@ export default function Navbar() {
           <div className="md:flex items-center justify-center hidden gap-5">
             <p className="text-gray-600 font-semibold">Register</p>
             <p className="text-gray-600 font-semibold">Sign In</p>
-            <p className="text-gray-600 font-semibold">Products</p>
+            <Link to="/product">
+              <p className="text-gray-600 font-semibold">Products</p>
+            </Link>
             <p className="text-gray-600 font-semibold">Contact Us</p>
           </div>
           <div className="flex gap-3">
-            <div className="relative">
-              <ShoppingCartIcon className="text-gray-700 h-7" />
-              <div className="bg-blue-500 w-5 h-5 borderFull flex items-center justify-center absolute -top-3 -right-3">
-                <p className="text-white font-semibold text-xs">3</p>
+            <Link to="/cart">
+              <div className="relative">
+                <ShoppingCartIcon className="text-gray-700 h-7" />
+                <div className="bg-blue-500 w-5 h-5 borderFull flex items-center justify-center absolute -top-3 -right-3">
+                  <p className="text-white font-semibold text-xs">3</p>
+                </div>
               </div>
-            </div>
+            </Link>
             {mobile ? (
               <XIcon
                 onClick={() => setMobile(!mobile)}
