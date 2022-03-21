@@ -4,18 +4,57 @@ import { LocationMarkerIcon, MailIcon, PhoneIcon } from "@heroicons/react/outlin
 
 export default function Footer() {
   return (
-    <div className="bg-[#403e38] p-5 flex flex-col md:grid space-y-10 md:grid-cols-3 space-x-2 py-20">
+    <div className="bg-[#403e38] p-5 flex flex-col md:grid space-y-10 md:grid-cols-4 space-x-2 py-20">
       <div className="flex flex-col justify-center gap-5">
-        <h1 className="text-pink-200 text-2xl font-semibold">iShop</h1>
-        <p className="text-pink-100 text-xs md:text-sm">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab harum
-          voluptatum cum libero quasi amet tempora velit quos cumque, neque
-          doloribus error provident autem? A?
+        <h1 className="text-white text-4xl font-semibold mb-5 tangerine">
+          Perfumes and More Store
+        </h1>
+        <p className="text-gray-300 text-xs md:text-sm">
+          Best online store to get qaulity perfumes at affordable prices from
+          the ease of your home
         </p>
-        <div className="flex items-center justify-start gap-5">
+      </div>
+
+      <div className="flex flex-col">
+        <h1 className="text-2xl text-white font-semibold mb-5">EXPLORE</h1>
+        <div className="flex flex-col items-start gap-2">
+          <p className="text-gray-300 text-md font-bold">Home</p>
+          <p className="text-gray-300 text-md font-bold">Products</p>
+          <p className="text-gray-300 text-md font-bold">Contact Us</p>
+          <p className="text-gray-300 text-md font-bold">Account</p>
+        </div>
+      </div>
+
+      <div>
+        <h1 className="text-2xl text-white font-semibold mb-5">Contact</h1>
+        <div className="flex flex-col items-start gap-4">
+          <div className="flex items-center gap-1">
+            <LocationMarkerIcon className="h-5 text-gray-300" />
+            <p className="text-gray-300 text-xs">
+              354 Dixie Path, South TobinChester 98336
+            </p>
+          </div>
+          <div className="flex items-center gap-3">
+            <PhoneIcon className="h-5 text-gray-300" />
+            <p className="text-gray-300 text-xs">+1 234 452 5266</p>
+          </div>
+          <div className="flex items-center gap-3">
+            <MailIcon className="h-5 text-gray-300" />
+            <p className="text-gray-300 text-xs">ishop@gmail.com</p>
+          </div>
+          {/* <img
+            src="https://i.ibb.co/Qfvn4z6/payment.png"
+            alt=""
+            className="w-full h-7 md:h-7 max-w-xs"
+          /> */}
+        </div>
+        </div>
+        <div>
+          <h1 className="text-2xl text-white font-semibold mb-5">FOLLOW</h1>
+          <div className="flex items-center justify-start gap-5">
           {/* Facebook icon */}
           <svg
-            class="w-6 h-6 text-pink-100 fill-current"
+            class="w-6 h-6 text-gray-300 fill-current"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
           >
@@ -23,7 +62,7 @@ export default function Footer() {
           </svg>
           {/* Twitter Icon */}
           <svg
-            class="w-6 h-6 text-pink-100 fill-current"
+            class="w-6 h-6 text-gray-300 fill-current"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
           >
@@ -31,51 +70,12 @@ export default function Footer() {
           </svg>
           {/* Linked In */}
           <svg
-            class="w-6 h-6 text-pink-100 fill-current"
+            class="w-6 h-6 text-gray-300 fill-current"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 448 512"
           >
             <path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"></path>
           </svg>
-        </div>
-      </div>
-
-      <div>
-        <h1 className="text-2xl text-pink-200 font-semibold mb-5">Useful Links</h1>
-        <div className="grid grid-cols-2">
-          <div className="space-y-1">
-            <p className="text-pink-100 text-sm">Home</p>
-            <p className="text-pink-100 text-sm">Man Fashion</p>
-            <p className="text-pink-100 text-sm">Accessories</p>
-            <p className="text-pink-100 text-sm">Order Tracking</p>
-            <p className="text-pink-100 text-sm">Order Tracking</p>
-          </div>
-          <div className="space-y-1">
-            <p className="text-pink-100 text-sm">Cart</p>
-            <p className="text-pink-100 text-sm">Woman Fashion</p>
-            <p className="text-pink-100 text-sm">My Account</p>
-            <p className="text-pink-100 text-sm">Wishlist</p>
-            <p className="text-pink-100 text-sm">Terms</p>
-          </div>
-        </div>
-      </div>
-
-      <div className="">
-        <h1 className="text-2xl text-pink-200 font-semibold mb-5">Contact</h1>
-        <div className="flex flex-col items-start gap-4">
-            <div className="flex items-center gap-1">
-                <LocationMarkerIcon className="h-5 text-pink-100" />
-                <p className="text-pink-100 text-xs">354 Dixie Path, South TobinChester 98336</p>
-            </div>
-            <div className="flex items-center gap-3">
-                <PhoneIcon className="h-5 text-pink-100" />
-                <p className="text-pink-100 text-xs">+1 234 452 5266</p>
-            </div>
-            <div className="flex items-center gap-3">
-                <MailIcon className="h-5 text-pink-100" />
-                <p className="text-pink-100 text-xs">ishop@gmail.com</p>
-            </div>
-            <img src="https://i.ibb.co/Qfvn4z6/payment.png" alt="" className="w-full h-7 md:h-7 max-w-xs" />
         </div>
       </div>
     </div>

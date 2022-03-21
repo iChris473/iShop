@@ -1,9 +1,12 @@
 import Category from '../components/Category'
+import Featured from '../components/Featured'
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
+import NewArrival from '../components/NewArrival'
 import Newsletter from '../components/Newsletter'
 import Products from '../components/Products'
 import Slide from '../components/Slide'
+import SpecialOffer from '../components/SpecialOffer'
 
 export default function Home() {
   return (
@@ -11,7 +14,10 @@ export default function Home() {
         <Navbar />
         <Slide />
         <Category />
-        <Products />
+        <Featured />
+        {/* <Products /> */}
+        <SpecialOffer />
+        <NewArrival />
         <Newsletter />
         <Footer />
     </div>
