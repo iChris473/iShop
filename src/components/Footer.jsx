@@ -54,7 +54,7 @@ export default function Footer() {
           <div className="flex items-center justify-start gap-5">
           {/* Facebook icon */}
           <svg
-            class="w-6 h-6 text-gray-300 fill-current"
+            className="w-6 h-6 text-gray-300 fill-current"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
           >
@@ -62,7 +62,7 @@ export default function Footer() {
           </svg>
           {/* Twitter Icon */}
           <svg
-            class="w-6 h-6 text-gray-300 fill-current"
+            className="w-6 h-6 text-gray-300 fill-current"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
           >
@@ -70,7 +70,7 @@ export default function Footer() {
           </svg>
           {/* Linked In */}
           <svg
-            class="w-6 h-6 text-gray-300 fill-current"
+            className="w-6 h-6 text-gray-300 fill-current"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 448 512"
           >

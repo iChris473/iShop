@@ -5,7 +5,7 @@ export default function Category() {
   return (
     <div className="my-12 p-5 flex flex-wrap gap-5 items-center justify-center">
       <div className="flex items-center justify-between w-full max-w-[450px] shadow-md bg-gray-100 p-10 gap-5">
-        <img src={img1} alt="" className="md:w-40 w-[9rem] h-[9rem] md:h-40" />
+        <img src={img1} alt="" className="md:w-40 w-[8rem] h-[8rem] md:h-40" />
         <div>
           <h2 className="text-gray-700 font-bold text-3xl">MEN'S</h2>
           <h1 className="text-gray-700 font-bold text-3xl">PERFUMES</h1>
@@ -13,7 +13,7 @@ export default function Category() {
         </div>
       </div>
       <div className="flex items-center justify-between w-full max-w-[450px] shadow-md bg-gray-100 p-10 gap-5">
-        <img src={img2} alt="" className="md:w-40 w-[9rem] h-[9rem] md:h-40" />
+        <img src={img2} alt="" className="md:w-40 w-[8rem] h-[8rem] md:h-40" />
         <div>
           <h2 className="text-gray-700 font-bold text-3xl">WOMEN'S</h2>
           <h1 className="text-gray-700 font-bold text-3xl">PERFUMES</h1>
