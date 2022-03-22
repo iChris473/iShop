@@ -15,8 +15,12 @@ export default function Navbar() {
         </Link>
         <div className="md:flex items-center justify-center gap-5">
           <div className="md:flex items-center justify-center hidden gap-5">
-            <p className="text-gray-600 font-semibold">Register</p>
-            <p className="text-gray-600 font-semibold">Sign In</p>
+            <Link to="/register">
+              <p className="text-gray-600 font-semibold">Register</p>
+            </Link>
+            <Link to="/login">
+              <p className="text-gray-600 font-semibold">Sign In</p>
+            </Link>
             <Link to="/product">
               <p className="text-gray-600 font-semibold">Products</p>
             </Link>
@@ -47,12 +51,16 @@ export default function Navbar() {
       </div>
       {mobile && (
         <div className="md:hidden flex flex-col items-center justify-center gap-5 my-10 w-full transition-all duration-[1.5s] ease-out">
-          <p className="text-gray-600 border-y pt-6 pb-2 border-white w-full text-center">
-            REGISTER
-          </p>
-          <p className="text-gray-600 border-b pb-2 border-white w-full text-center">
-            SIGN IN
-          </p>
+          <Link to="/register">
+            <p className="text-gray-600 border-y pt-6 pb-2 border-white w-full text-center">
+              REGISTER
+            </p>
+          </Link>
+          <Link to="login">
+            <p className="text-gray-600 border-b pb-2 border-white w-full text-center">
+              SIGN IN
+            </p>
+          </Link>
           <Link to="/">
             <p className="text-gray-600 border-b pb-2 border-white w-full text-center">
               Home

@@ -13,7 +13,7 @@ export default function CheckoutItem() {
         </h1>
       </div>
       <div className="my-10 flex items-center justify-center flex-col p-2 border max-w-[800px] rounded-md mx-auto">
-        <h1 className="text-3xl text-gray-700 font-semibold pb-3 w-[90%] border-b border-blue-200 w-full text-center m-5">
+        <h1 className="text-3xl text-gray-700 font-semibold pb-3 w-[90%] border-b border-blue-200 text-center m-5">
           Shipping Address
         </h1>
         <div className="w-full p-5 space-y-5">
