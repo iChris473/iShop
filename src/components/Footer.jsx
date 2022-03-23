@@ -4,7 +4,7 @@ import { LocationMarkerIcon, MailIcon, PhoneIcon } from "@heroicons/react/outlin
 
 export default function Footer() {
   return (
-    <div className="bg-[#403e38] p-5 flex flex-col md:grid space-y-10 md:grid-cols-4 space-x-2 py-20">
+    <div className="bg-[#403e38] p-5 flex flex-col md:grid space-y-10 md:grid-cols-4 space-x-2 py-12">
       <div className="flex flex-col justify-center gap-5">
         <h1 className="text-white text-4xl font-semibold mb-5 tangerine">
           Perfumes and More Store

@@ -1,10 +1,13 @@
 
-import {MenuAlt3Icon, SearchIcon, ShoppingCartIcon, XIcon} from "@heroicons/react/outline"
-import { useState } from "react";
+import {MenuAlt3Icon, ShoppingCartIcon, XIcon} from "@heroicons/react/outline"
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
 
 export default function Navbar() {
   const [mobile, setMobile] = useState(false)
+  const {user} = useContext(AuthContext)
+
   return (
     <header className="bg-gray-100 border-b shadow border-gray-200 p-5 fixed w-full z-50">
       <div className="w-full flex items-center justify-between">
@@ -15,23 +18,34 @@ export default function Navbar() {
         </Link>
         <div className="md:flex items-center justify-center gap-5">
           <div className="md:flex items-center justify-center hidden gap-5">
-            <Link to="/register">
-              <p className="text-gray-600 font-semibold">Register</p>
-            </Link>
-            <Link to="/login">
-              <p className="text-gray-600 font-semibold">Sign In</p>
-            </Link>
+            {!user && (
+              <Link to="/register">
+                <p className="text-gray-600 font-semibold">Register</p>
+              </Link>
+            )}
+            {!user && (
+              <Link to="/login">
+                <p className="text-gray-600 font-semibold">Sign In</p>
+              </Link>
+            )}
+            {user && (
+              <Link to="/">
+                <p className="text-gray-600 font-semibold">Home</p>
+              </Link>
+            )}
             <Link to="/product">
               <p className="text-gray-600 font-semibold">Products</p>
             </Link>
-            <p className="text-gray-600 font-semibold">Contact Us</p>
           </div>
-          <div className="flex gap-3">
+          <div className="flex gap-1 items-center justify-center">
             <Link to="/cart">
-              <div className="relative">
-                <ShoppingCartIcon className="text-gray-700 h-7" />
-                <div className="bg-blue-500 w-5 h-5 borderFull flex items-center justify-center absolute -top-3 -right-3">
-                  <p className="text-white font-semibold text-xs">3</p>
+              <div className="flex items-center justify-center">
+                <p className="text-gray-600 font-semibold md:block hidden">Cart</p>
+                <div className="relative">
+                  <ShoppingCartIcon className="text-gray-700 h-7" />
+                  <div className="bg-blue-500 w-5 h-5 borderFull flex items-center justify-center absolute -top-3 -right-3">
+                    <p className="text-white font-semibold text-xs">3</p>
+                  </div>
                 </div>
               </div>
             </Link>
@@ -51,16 +65,20 @@ export default function Navbar() {
       </div>
       {mobile && (
         <div className="md:hidden flex flex-col items-center justify-center gap-5 my-10 w-full transition-all duration-[1.5s] ease-out">
-          <Link to="/register">
-            <p className="text-gray-600 border-y pt-6 pb-2 border-white w-full text-center">
-              REGISTER
-            </p>
-          </Link>
-          <Link to="login">
-            <p className="text-gray-600 border-b pb-2 border-white w-full text-center">
-              SIGN IN
-            </p>
-          </Link>
+          {!user && (
+            <Link to="/register">
+              <p className="text-gray-600 border-y pt-6 pb-2 border-white w-full text-center">
+                REGISTER
+              </p>
+            </Link>
+          )}
+          {!user && (
+            <Link to="/login">
+              <p className="text-gray-600 border-b pb-2 border-white w-full text-center">
+                SIGN IN
+              </p>
+            </Link>
+          )}
           <Link to="/">
             <p className="text-gray-600 border-b pb-2 border-white w-full text-center">
               Home
@@ -71,15 +89,11 @@ export default function Navbar() {
               Product
             </p>
           </Link>
-          <p className="text-gray-600 border-b pb-2 border-white w-full text-center">
-            Contact Us
-          </p>
-          {/* <div className="relative">
-            <ShoppingCartIcon className="text-gray-700 h-7" />
-            <div className="bg-blue-500 w-5 h-5 borderFull flex items-center justify-center absolute -top-3 -right-3">
-              <p className="text-white font-semibold text-xs">3</p>
-            </div>
-          </div> */}
+          <Link to="/cart">
+            <p className="text-gray-600 border-b pb-2 border-white w-full text-center">
+              Cart
+            </p>
+          </Link>
         </div>
       )}
     </header>
