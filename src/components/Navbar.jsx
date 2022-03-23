@@ -52,12 +52,12 @@ export default function Navbar() {
             {mobile ? (
               <XIcon
                 onClick={() => setMobile(!mobile)}
-                className="h-7 md:hidden"
+                className="h-7 ml-2 md:hidden"
               />
             ) : (
               <MenuAlt3Icon
                 onClick={() => setMobile(!mobile)}
-                className="h-7 md:hidden"
+                className="h-7 ml-2 md:hidden"
               />
             )}
           </div>

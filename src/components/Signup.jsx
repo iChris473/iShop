@@ -83,7 +83,7 @@ export default function Signup() {
                 required
                 type="email"
                 placeholder="user@email.com"
-                className="border font-mono outline-none text-gray-700 focus-ring-0 p-2 rounded-md focus:border-green-200 w-full "
+                className="border font-sans outline-none text-gray-700 focus-ring-0 p-2 rounded-md focus:border-green-200 w-full "
               />
             </div>
             <div className="w-full space-y-2">

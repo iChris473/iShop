@@ -17,6 +17,7 @@ export default function Signin() {
   const [loading, setLoading] = useState(false)
 
   const  handleSubmit = async e => {
+    setLoading(true)
     e.preventDefault()
     
     const timeout = () => {
@@ -65,7 +66,7 @@ export default function Signin() {
                 required
                 type="email"
                 placeholder="user@email.com"
-                className="border font-mono outline-none text-gray-700 focus-ring-0 p-2 rounded-md focus:border-green-200 w-full "
+                className="border font-sans outline-none text-gray-700 focus-ring-0 p-2 rounded-md focus:border-green-200 w-full "
               />
             </div>
             <div className="w-full space-y-2">
@@ -78,7 +79,7 @@ export default function Signin() {
               />
             </div>
             <button type="submit" className="bg-orange-600 p-1 rounded-lg w-full text-white font-semibold tracking-wide text-md">
-              Sign In
+              {loading ? "Sginin in..." : "Sign In"}
             </button>
             <Link to="/register">
               <p className="mt-5 cursor-pointer text-gray-700 font-semibold tracking-wide text-xs text-center">
