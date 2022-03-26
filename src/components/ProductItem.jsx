@@ -11,6 +11,10 @@ export default function ProductItem({index}) {
   const {user} = useContext(AuthContext)
 
   const addToCart = async () => {
+    if(!user){
+      navigate("/register")
+      return
+    }
     setAdded(true)
     const newCart = {
       userId: user.id,
@@ -30,7 +34,7 @@ console.log(user?.token)
   return (
     <div>
         <div className="border p-2 flex flex-col rounded-md items-center justify-center bg-[#fcfbf9] shadow max-w-[150px] md:max-w-[200px] relative hover:bg-orange-50 hover:scale-125 cursor-pointer">
-          <div onClick={() => mj} className="h-full w-full bg-tansparent z-10 absolute" />
+          <div onClick={() => navigate("/cart")} className="h-full w-full bg-tansparent z-10 absolute" />
           <img
             src={require(`../images/assets/p${index + 1}.png`)}
             alt=""
