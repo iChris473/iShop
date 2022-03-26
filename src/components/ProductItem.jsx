@@ -1,14 +1,18 @@
 import { ShoppingCartIcon } from "@heroicons/react/outline"
 import { useContext, useState } from "react";
+import { useRecoilState } from "recoil";
 import { Link, useNavigate } from "react-router-dom";
 import { userRequest } from "./axiosMethod";
 import { AuthContext } from "../context/AuthContext";
+import { productItem } from "../atom";
 
-export default function ProductItem({index}) {
+
+export default function ProductItem({product}) {
 
   const [added, setAdded] = useState(false)
   const navigate = useNavigate()
   const {user} = useContext(AuthContext)
+  const [productItems, SetProductItems] = useRecoilState(productItem)
 
   const addToCart = async () => {
     if(!user){
@@ -29,27 +33,26 @@ export default function ProductItem({index}) {
       console.log(error)
     }
   }
-console.log(user?.token)
 
   return (
     <div>
-        <div className="border p-2 flex flex-col rounded-md items-center justify-center bg-[#fcfbf9] shadow max-w-[150px] md:max-w-[200px] relative hover:bg-orange-50 hover:scale-125 cursor-pointer">
-          <div onClick={() => navigate("/cart")} className="h-full w-full bg-tansparent z-10 absolute" />
+        <div className="border p-2 flex flex-col rounded-md items-center justify-center bg-[#fcfbf9] shadow max-w-[150px] md:max-w-[200px] relative hover:scale-110 cursor-pointer">
+          <div onClick={() => {SetProductItems(product); navigate("/single")}} className="h-full w-full bg-tansparent z-10 absolute" />
           <img
-            src={require(`../images/assets/p${index + 1}.png`)}
+            src={product.picture}
             alt=""
             className="h-[100px] w-[100px] object-cover"
           />
           <div className="flex flex-col items-center justify-between">
-            <p className="text-gray-400 text-xs my-2">Unisex</p>
-            <p className="text-sm truncate w-[100px] text-gray-500 font-semibold">
-              Dolice Perfume
+            <p className="text-gray-400 text-xs my-2">{product.category}</p>
+            <p className="text-md text-center truncate w-[100px] text-gray-500 font-semibold">
+              {product.name}
             </p>
-            <p className="text-green-500 font-bold">#12,000</p>
-            <ShoppingCartIcon
+            <p className="text-green-500 font-bold"># {product.price.toLocaleString()}</p>
+            <button
               onClick={addToCart}
-              className={`h-8 p-1 ${added ? "bg-orange-500 text-white" : "bg-white border border-orange-500 text-orange-500"} borderFull absolute top-0 right-0`}
-            />
+              className={`p-1 text-xs z-20 hover:bg-black rounded-sm w-full ${!added ? "bg-gray-800 text-white" : "bg-white border border-orange-500 text-orange-500"} top-0 right-0`}
+            >Add to Cart</button>
           </div>
         </div>
     </div>

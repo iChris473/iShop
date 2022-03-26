@@ -2,9 +2,12 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { useRecoilState } from "recoil";
+import { productItem } from "../atom";
 
 export default function SingleProductItem() {
 
+  const [product, SetProduct] = useRecoilState(productItem);
     const [counter, setCounter] = useState(1)
     const [loading, setLoading] = useState(false)
     const [added, setAdded] = useState(false)
@@ -23,29 +26,37 @@ export default function SingleProductItem() {
       <div>
         <div className="pt-32 flex flex-col md:flex-row items-center justify-center gap-5">
           <img
-            src={require(`../images/assets/p4.png`)}
+            src={product.picture}
             alt=""
             className="hs-[250px] ws-[250px] h-[350px] w-[350px] object-cover bg-gray-50 p-2"
           />
         </div>
         <div className="my-10 p-5">
           <h1 className="font-semibold text-orange-600 tracking-wide text-2xl text-left border-b border-orange-200 pb-2">
-            Chanel Coco Mademoiselle Eau de Parfum
+            {product.name}
           </h1>
           <div className="flex items-center justify-between gap-5 max-w-[250px] border-b pb-4 my-4">
             <h2 className="text-gray-400 font-semibold text-lg tracking-wide">
               Brand:
             </h2>
             <h1 className="text-gray-700 font-semibold text-xl tracking-wide">
-              Dolce&Gabbana
+              {product.brand}
             </h1>
           </div>
-          <div className="flex items-center justify-between gap-5 max-w-[250px] border-b pb-4 my-4">
+          <div className="flex items-center justify-between gap-5 max-w-[650px] border-b pb-4 my-4">
             <h2 className="text-gray-400 font-semibold text-lg tracking-wide">
+              Description:
+            </h2>
+            <h1 className="text-gray-700 md:text-md text-left w-full ml-10 text-sm tracking-wide">
+            {product.desc}
+            </h1>
+          </div>
+          <div className="flex items-center justify-between gap-5 max-w-[420px] border-b pb-4 my-4">
+            <h2 className="text-gray-400 font-semibold text-md md:text-lg tracking-wide">
               Availability:
             </h2>
             <h1 className="text-green-500 font-semibold text-xl tracking-wide">
-              In Stock
+              {product.quantity} perfume(s) are In Stock
             </h1>
           </div>
           <div className="flex items-center justify-between gap-5 max-w-[250px] border-b pb-4 my-4">
@@ -53,7 +64,7 @@ export default function SingleProductItem() {
               Price:
             </h2>
             <h1 className="text-gray-800 font-bold text-xl tracking-wide">
-              NGN 14,000
+              NGN {product.price.toLocaleString()}
             </h1>
           </div>
           <div className="flex items-center justify-between gap-5 max-w-[250px] border-b pb-4 my-4">
@@ -61,7 +72,7 @@ export default function SingleProductItem() {
               Category:
             </h2>
             <h1 className="text-gray-800 font-bold text-xl tracking-wide">
-              Unisex
+            {product.category}
             </h1>
           </div>
           <div className="flex items-center justify-between gap-5 max-w-[250px] border-b pb-4 my-4">

@@ -5,3 +5,8 @@ export const carts = atom({
     key:"cartState ",
     default:[]
 })
+
+export const productItem = atom({
+    key:"productItem",
+    default:[]
+})
