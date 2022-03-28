@@ -1,36 +1,57 @@
 import { ShoppingCartIcon } from "@heroicons/react/outline"
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import { Link, useNavigate } from "react-router-dom";
 import { userRequest } from "./axiosMethod";
 import { AuthContext } from "../context/AuthContext";
-import { productItem } from "../atom";
+import { carts, productItem } from "../atom";
 
 
 export default function ProductItem({product}) {
 
   const [added, setAdded] = useState(false)
+  const [inCart, setInCart] = useState([])
   const navigate = useNavigate()
   const {user} = useContext(AuthContext)
   const [productItems, SetProductItems] = useRecoilState(productItem)
+  const [totalCart, SetTotalCart] = useRecoilState(carts)
+
+  useEffect(() => {
+    const getUserCart = async () => {
+      try {
+        const usersCart = await userRequest.get(`/cart/user/${user.id}?userid=${user.id}`)
+        SetTotalCart(usersCart.data)
+        setAdded(usersCart.data.filter(data => data.productId == product._id).length != 0)
+      } catch (error) {
+        console.log(error.message)
+      }
+    }
+    getUserCart()
+  }, [user, added])
 
   const addToCart = async () => {
     if(!user){
       navigate("/register")
       return
     }
-    setAdded(true)
     const newCart = {
       userId: user.id,
-      productId: "12xyz",
-      quantity:  1,
+      productId: product._id,
+      name: product.name,
+      price: product.price,
+      picture: product.picture
     }
     try {
-      const res = await userRequest.post(`/cart/create/${user.id}`, newCart)
-      console.log(res)
+      if(added){
+        await userRequest.delete(`/cart/delete/${user.id}?id=${product._id}`)
+        setAdded(false)
+      } else {
+        await userRequest.post(`/cart/create/${user.id}`, newCart)
+        setAdded(true)
+      }
     } catch (error) {
       setAdded(false)
-      console.log(error)
+      console.log(error.response.data)
     }
   }
 
@@ -51,8 +72,8 @@ export default function ProductItem({product}) {
             <p className="text-green-500 font-bold"># {product.price.toLocaleString()}</p>
             <button
               onClick={addToCart}
-              className={`p-1 text-xs z-20 hover:bg-black rounded-sm w-full ${!added ? "bg-gray-800 text-white" : "bg-white border border-orange-500 text-orange-500"} top-0 right-0`}
-            >Add to Cart</button>
+              className={`p-1 text-xs z-20 rounded-sm w-full ${!added ? "bg-gray-800 text-white hover:bg-black" : "hover:bg-white border border-orange-500 bg-orange-500 text-white hover:text-orange-500 font-semibold"} top-0 right-0`}
+            >{added ? "Remove from Cart" : "Add to Cart"}</button>
           </div>
         </div>
     </div>

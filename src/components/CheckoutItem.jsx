@@ -16,10 +16,11 @@ export default function CheckoutItem() {
         <h1 className="text-3xl text-gray-700 font-semibold pb-3 w-[90%] border-b border-blue-200 text-center m-5">
           Shipping Address
         </h1>
-        <div className="w-full p-5 space-y-5">
+        <form className="w-full p-5 space-y-5">
           <div>
             <p className="text-md tracking-wide text-gray-600">First Name *</p>
             <input
+              required
               type="text"
               className="border outline-none focus-ring-0 p-2 rounded-md focus:border-green-200 w-full "
             />
@@ -27,6 +28,7 @@ export default function CheckoutItem() {
           <div>
             <p className="text-md tracking-wide text-gray-600">Last Name *</p>
             <input
+              required
               type="text"
               className="border outline-none focus-ring-0 p-2 rounded-md focus:border-green-200 w-full "
             />
@@ -34,6 +36,7 @@ export default function CheckoutItem() {
           <div>
             <p className="text-md tracking-wide text-gray-600">Middle Name *</p>
             <input
+              required
               type="text"
               className="border outline-none focus-ring-0 p-2 rounded-md focus:border-green-200 w-full "
             />
@@ -43,6 +46,7 @@ export default function CheckoutItem() {
               Street Address *
             </p>
             <input
+              required
               type="text"
               className="border outline-none focus-ring-0 p-2 rounded-md focus:border-green-200 w-full "
             />
@@ -52,6 +56,7 @@ export default function CheckoutItem() {
               Zip/Postal Code *
             </p>
             <input
+              required
               type="text"
               className="border outline-none focus-ring-0 p-2 rounded-md focus:border-green-200 w-full "
             />
@@ -61,6 +66,7 @@ export default function CheckoutItem() {
               Phone Number *
             </p>
             <input
+              required
               type="text"
               className="border outline-none focus-ring-0 p-2 rounded-md focus:border-green-200 w-full "
             />
@@ -119,12 +125,13 @@ export default function CheckoutItem() {
               City *
             </p>
             <input
+              required
               type="text"
               className="border outline-none focus-ring-0 p-2 rounded-md focus:border-green-200 w-full "
             />
           </div>
           <button className="p-2 text-white rounded-md bg-orange-600 block mx-auto font-semibold w-full hover:bg-white hover:text-black hover:border border-gray-700">Proceed to Checkout</button>
-        </div>
+        </form>
       </div>
     </div>
   );

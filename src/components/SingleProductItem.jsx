@@ -1,23 +1,61 @@
 
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
-import { productItem } from "../atom";
+import { carts, productItem } from "../atom";
+import { AuthContext } from "../context/AuthContext";
+import { userRequest } from "./axiosMethod";
 
 export default function SingleProductItem() {
 
+  const { user } = useContext(AuthContext);
   const [product, SetProduct] = useRecoilState(productItem);
-    const [counter, setCounter] = useState(1)
-    const [loading, setLoading] = useState(false)
-    const [added, setAdded] = useState(false)
-    const navigate = useNavigate()
-    const addToCart = () => {
-        setLoading(true)
-    setTimeout(() => {
-        setLoading(false)
-        setAdded(true)
-    }, 2000)
+  const [totalCart, SetTotalCart] = useRecoilState(carts)
+  const [counter, setCounter] = useState(1)
+  const [loading, setLoading] = useState(false)
+  const [added, setAdded] = useState(false)
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    const getUserCart = async () => {
+      try {
+        const usersCart = await userRequest.get(`/cart/user/${user.id}?userid=${user.id}`)
+        SetTotalCart(usersCart.data)
+        setAdded(usersCart.data.filter(data => data.productId == product._id).length != 0)
+      } catch (error) {
+        console.log(error.message)
+      }
+    }
+    getUserCart()
+  }, [user, added])
+
+  const addToCart = async () => {
+    
+    if(!user){
+      navigate("/register")
+      return;
+    }
+    
+    setLoading(true)
+
+    const newCart =  {
+      userId: user.id,
+      productId: product._id,
+      name: product.name,
+      price: product.price,
+      picture: product.picture,
+      quantity: counter
+    }
+
+    try {
+      const res = await userRequest.post(`/cart/create/${user.id}`, newCart)
+      setAdded(true)
+      console.log(res.data)
+    } catch (error) {
+      console.log(error)
+      setAdded(false)
+    }
+
     
     }
 
@@ -106,18 +144,18 @@ export default function SingleProductItem() {
       </div>
       {added ? (
         <div className="flex flex-col items-center justify-center mb-10 gap-5">
-          <p className="bg-green-500 p-2 rounded text-white font-semibold tracker-wider text-lg w-[90%] mx-auto text-center">
+          <p className="bg-green-500 max-w-[700px] p-2 rounded text-white font-semibold tracker-wider text-lg w-[90%] mx-auto text-center">
             Added to Cart
           </p>
           <button
             onClick={() => navigate("/cart")}
-            className="bg-white p-2 rounded-full text-black border border-black font-semibold tracker-wider text-lg w-[90%] mx-auto text-center"
+            className="bg-white max-w-[700px] hover:bg-black hover:text-white p-2 rounded-full text-black border border-black font-semibold tracker-wider text-lg w-[90%] mx-auto text-center"
           >
             View Cart
           </button>
           <button
             onClick={() => navigate("/product")}
-            className="bg-white p-2 rounded-full text-black border border-black font-semibold tracker-wider text-lg w-[90%] mx-auto text-center"
+            className="hover:bg-white hover:text-black border-black hover:border max-w-[700px] p-2 rounded-full text-white bg-gray-800 font-semibold tracker-wider text-lg w-[90%] mx-auto text-center"
           >
             Continue Shopping
           </button>
@@ -127,7 +165,7 @@ export default function SingleProductItem() {
           onClick={addToCart}
           className="bg-orange-500 text-white p-2 font-semibold tracking-wide text-md w-[90%] rounded-2xl mb-10 max-w-[700px] block mx-auto animate-bounce hover:bg-orange-700"
         >
-          {loading ? "Adding..." : "Add to Cart"}
+          {added ? "Remove from cart" : loading ? "Adding..." : "Add to Cart"}
         </button>
       )}
     </div>

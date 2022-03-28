@@ -1,12 +1,15 @@
 import ProductItem from "./ProductItem"
 import {useState, useEffect} from "react"
 import {publicRequest} from "./axiosMethod"
+import { filter } from "../atom"
+import { useRecoilState } from "recoil"
 export default function Products() {
 
+  const [catgry, setCatgry] = useRecoilState(filter)
   const [allProducts, setAllProducts] = useState([])
   const [loading, setLoading] = useState(true)
   const [err, setErr] = useState(false)
-  const [cat, setCat] = useState("")
+  const [cat, setCat] = useState(catgry)
   const [price, setPrice] = useState("")
 
   useEffect(() => {
@@ -16,6 +19,7 @@ export default function Products() {
         const res = await publicRequest.get(`/product/get?cat=${cat}&price=${price}`)
         setAllProducts(res.data) 
         setLoading(false)
+        setCatgry('')
       } catch (error) {
         console.log(error)
         setLoading(false)

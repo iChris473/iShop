@@ -10,3 +10,11 @@ export const productItem = atom({
     key:"productItem",
     default:[]
 })
+export const updateTotal = atom({
+    key:"updateTotal",
+    default: false
+})
+export const filter = atom({
+    key:"filter",
+    default: ""
+})
