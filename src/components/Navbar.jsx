@@ -50,7 +50,7 @@ export default function Navbar() {
                   <div className="relative">
                     <ShoppingCartIcon className="text-gray-700 h-7" />
                     <div className="bg-blue-500 w-5 h-5 borderFull flex items-center justify-center absolute -top-3 -right-3">
-                      <p className="text-white font-semibold text-xs mt-1">{totalCart.length}</p>
+                      <p className="text-white font-semibold text-xs">{totalCart.length}</p>
                     </div>
                   </div>
                 </div>
