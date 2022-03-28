@@ -34,7 +34,7 @@ export default function Products() {
       <h1 className="font-bold text-center text-3xl text-gray-800 mb-10 border-b border-orange-500 w-[80%] mx-auto pb-3">
         ALL PERFUMES
       </h1>
-      <div className="flex flex-col items-start ml-7 justify-start gap-5 mb-10">
+      <div className="flex flex-col items-start sm:ml-7 justify-start gap-5 mb-10">
         <h1 className="text-gray-600 font-semibold text-xl">Filter Products</h1>
         <div className="flex gap-10">
           <div className="flex items-center gap-3">
